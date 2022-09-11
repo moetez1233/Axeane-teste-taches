@@ -1,0 +1,49 @@
+<div class="tableUser">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">id</th>
+                <th scope="col">First</th>
+                <th scope="col">Last</th>
+                <th scope="col">Edit</th>
+            </tr>
+        </thead>
+        <tbody *ngFor="let user of users let UserIndex=index;">
+            <tr>
+                <th scope="row">
+
+                    <div>{{user.id}}</div>
+
+
+                </th>
+
+                <td>
+                    <div *ngIf=!user.IsEdit> {{user.firstName}}</div>
+
+                    <input type="text" id="firstN" #firtNam required minlength="1" class="form-control" value="{{user.firstName}}" *ngIf=user.IsEdit required>
+
+
+                </td>
+                <td>
+                    <div *ngIf=!user.IsEdit>{{user.lastName}}</div>
+                    <input type="text" id="lastN" value="{{user.lastName}}" class="form-control" *ngIf=user.IsEdit>
+                </td>
+                <td>
+                    <button type="button" class="btn btn-secondary" (click)="EditUser(user)" *ngIf=user.IsSave>Edit</button>
+                    <button type="button" class="btn btn-secondary" (click)="SaveChang(UserIndex)" *ngIf=!user.IsSave>Save</button>
+                    <button type="button" class="btn btn-danger" (click)="CancelChang(UserIndex)" *ngIf=!user.IsSave>X</button>
+
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <p id="showAlert" style="display: none;color:red">{{message }} is Required </p>
+
+
+</div>
+
+<h4 style="margin-left: 20%;">Tache 2</h4>
+
+<app-list-users>
+</app-list-users>

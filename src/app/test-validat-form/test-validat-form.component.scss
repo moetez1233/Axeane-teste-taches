@@ -1,0 +1,16 @@
+.card {
+    margin-top: 10%;
+    .listBtn {
+        button {
+            margin-right: 0.5%;
+        }
+    }
+    .btn-outline-Special {
+        color: #008000;
+        background-color: #b0e0e6;
+    }
+    .btn-outline-Special:hover {
+        color: #008000;
+        background-color: #00ffff;
+    }
+}

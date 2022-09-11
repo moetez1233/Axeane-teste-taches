@@ -1,0 +1,74 @@
+<div class="dropdown">
+    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        choose column to add
+    </button>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+
+        <div *ngFor="let empAdd of listEmpToAdd ; let empIndex=index">
+            <!--
+            <a class="dropdown-item" style="cursor: pointer;" (click)="AddColum(empAdd.name)">{{empAdd.name}}</a>
+        -->
+
+            <div class="form-check" (click)="AddColum(empAdd)">
+                <label class="form-check-label" for="flexCheckChecked">
+                    {{empAdd.name}}
+                </label>
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" [checked]="!empAdd.isCheked">
+
+            </div>
+        </div>
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+
+
+                <th *ngFor="let empHeader of listEmpToAdd" class='table-header'>
+                    <div [hidden]=empHeader.isCheked> {{empHeader.name}}</div>
+
+                </th>
+            </tr>
+
+
+            <!--
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col" [hidden]="firstNameChow">FirstName</th>
+                <th scope="col" [hidden]="emailShow">email</th>
+                <th scope="col" [hidden]="PhoneShow">
+
+                    <div class="RemoveColu">Phone </div>
+                </th>
+
+                <th scope="col" [hidden]="CityShow">
+
+
+                    <div class="RemoveColu">City </div>
+                </th>
+                <th scope="col" [hidden]="StreetShow">
+
+
+                    <div class="RemoveColu"> Street </div>
+                </th>
+
+
+            </tr>
+        -->
+        </thead>
+        <tbody *ngFor="let emp of allEmployees ; let empIndex=index">
+            <tr>
+                <th scope="row">{{emp.id}}</th>
+                <td [hidden]=emp.isCheked>{{emp.username}}</td>
+                <td [hidden]=emp.isCheked>{{emp.email}}</td>
+                <td [hidden]=emp.isCheked>{{emp.phone}}</td>
+
+                <td [hidden]=emp.isCheked>{{emp.address?.city}}</td>
+                <td [hidden]=emp.isCheked>{{emp.address?.street}}</td>
+
+
+            </tr>
+
+        </tbody>
+    </table>
+</div>
